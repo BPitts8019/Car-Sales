@@ -32,23 +32,23 @@ const addFeature = (state, feature) => {
       feature
    ];
 
-   console.log(`New State: ${JSON.stringify(newState, null, 3)}`);
+   // console.log(`New State: ${JSON.stringify(newState, null, 3)}`);
 
    return newState;
 };
+
 const removeFeature = (state, feature) => {
    const newState = {...state};
 
-   //remove feature from additionalFeatures
-   newState.additionalFeatures = newState.additionalFeatures.filter(item => item.id !== feature.id);
-   //add feature to car.features
-   newState.car.features = [
-      ...newState.car.features,
+   //subtract feature price from additional prices
+   newState.additionalPrice -= feature.price;
+   //add feature to additionalFeatures
+   newState.additionalFeatures = [
+      ...newState.additionalFeatures,
       feature
-   ];
-   // newState.car.features.push(feature);
-
-   console.log(`New State: ${JSON.stringify(newState, null, 3)}`);
+   ]
+   //remove feature from car.features
+   newState.car.features = newState.car.features.filter(item => item.id !== feature.id);
 
    return newState;
 };
@@ -56,8 +56,10 @@ const removeFeature = (state, feature) => {
 export default function (state = initialState, action) {
    switch (action.type) {
       case ADD_FEATURE:
-         console.log(`Adding: ${JSON.stringify(action.payload, null, 3)}`);
+         // console.log(`Adding: ${JSON.stringify(action.payload, null, 3)}`);
          return addFeature(state, action.payload);
+      case REMOVE_FEATURE:
+         return removeFeature(state, action.payload);
       default:
          return state;
    }

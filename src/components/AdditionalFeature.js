@@ -3,16 +3,12 @@ import {connect} from "react-redux";
 import {addFeature} from "../actions/car.js";
 
 const AdditionalFeature = ({ feature, addFeature }) => {
-   const handleClick = event => {
-      addFeature(feature);
-   };
-
    return (
       <li>
          {/* Add an onClick that will let you add a feature to your car */}
          <button 
             className="button" 
-            onClick={handleClick}
+            onClick={() => {addFeature(feature)}}
          >Add</button>
          {feature.name} (+{feature.price})
       </li>
