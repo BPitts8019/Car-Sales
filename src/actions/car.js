@@ -1,1 +1,8 @@
-export const SOME_ACTION = "SOME_ACTION";
+const ADD_FEATURE = "ADD_FEATURE";
+
+export function addFeature (feature) {
+   return {
+      type: ADD_FEATURE,
+      payload: feature
+   }
+}
