@@ -1,7 +1,7 @@
 import {SOME_ACTION} from "../actions/car.js";
 
 const initialState = {
-   additionalPrice: 0,
+   additionalPrice: 1750,
    car: {
       price: 26395,
       name: '2019 Ford Mustang',
