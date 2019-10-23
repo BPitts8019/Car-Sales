@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import AdditionalFeature from './AdditionalFeature';
 
-const AdditionalFeatures = ({additionalFeatures, addFeature}) => {
+const AdditionalFeatures = ({additionalFeatures}) => {
    return (
       <div className="content">
          <h4>Additional Features</h4>
@@ -11,7 +11,7 @@ const AdditionalFeatures = ({additionalFeatures, addFeature}) => {
             additionalFeatures.length 
             ? (<ol type="1">
                   {additionalFeatures.map(item => (
-                     <AdditionalFeature key={item.id} feature={item} addFeature={addFeature} />
+                     <AdditionalFeature key={item.id} feature={item} />
                   ))}
                </ol>) 
             : <p>Nice looking car!</p>
@@ -25,10 +25,4 @@ const mapStateToProps = state => {
       additionalFeatures: state.additionalFeatures
    };
 };
-
-const mapDispatchToProps = dispatch => {
-   return {
-      addFeature: feature => {console.log(`Adding: ${JSON.stringify(feature, null, 3)}`)}
-   };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(AdditionalFeatures);
+export default connect(mapStateToProps)(AdditionalFeatures);

@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {addFeature} from "../actions/car.js";
 
 const AdditionalFeature = ({ feature, addFeature }) => {
    const handleClick = event => {
@@ -17,4 +19,10 @@ const AdditionalFeature = ({ feature, addFeature }) => {
    );
 };
 
-export default AdditionalFeature;
+const mapDispatchToProps = dispatch => {
+   return {
+      addFeature: feature => {dispatch(addFeature(feature))}
+   };
+};
+
+export default connect(null, mapDispatchToProps)(AdditionalFeature);

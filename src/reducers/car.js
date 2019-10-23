@@ -1,4 +1,4 @@
-import {SOME_ACTION} from "../actions/car.js";
+import {ADD_FEATURE} from "../actions/car.js";
 
 const initialState = {
    additionalPrice: 0,
@@ -19,6 +19,9 @@ const initialState = {
 
 export default function (state = initialState, action) {
    switch (action.type) {
+      case ADD_FEATURE:
+         console.log(`Adding: ${JSON.stringify(action.payload, null, 3)}`);
+         return state;
       default:
          return state;
    }
