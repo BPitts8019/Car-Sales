@@ -35,7 +35,7 @@ const App = ({car, additionalFeatures, additionalPrice}) => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={car} />
+        <Header />
         <AddedFeatures car={car} />
       </div>
       <div className="box">
@@ -50,4 +50,5 @@ const mapStateToProps = (state) => {
    return {...state};
 }
 
+// export default App;
 export default connect(mapStateToProps)(App);
