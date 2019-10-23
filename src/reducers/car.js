@@ -1,4 +1,5 @@
 import {ADD_FEATURE} from "../actions/car.js";
+import {REMOVE_FEATURE} from "../actions/car.js";
 
 const initialState = {
    additionalPrice: 0,
@@ -17,11 +18,46 @@ const initialState = {
    ]
 };
 
+const addFeature = (state, feature) => {
+   const newState = {...state};
+
+   //add feature price to additional prices
+   newState.additionalPrice += feature.price;
+   //remove feature from additionalFeatures
+   newState.additionalFeatures = newState.additionalFeatures.filter(item => item.id !== feature.id);
+   //add feature to car.features
+   // newState.car.features.push(feature);
+   newState.car.features = [
+      ...newState.car.features,
+      feature
+   ];
+
+   console.log(`New State: ${JSON.stringify(newState, null, 3)}`);
+
+   return newState;
+};
+const removeFeature = (state, feature) => {
+   const newState = {...state};
+
+   //remove feature from additionalFeatures
+   newState.additionalFeatures = newState.additionalFeatures.filter(item => item.id !== feature.id);
+   //add feature to car.features
+   newState.car.features = [
+      ...newState.car.features,
+      feature
+   ];
+   // newState.car.features.push(feature);
+
+   console.log(`New State: ${JSON.stringify(newState, null, 3)}`);
+
+   return newState;
+};
+
 export default function (state = initialState, action) {
    switch (action.type) {
       case ADD_FEATURE:
          console.log(`Adding: ${JSON.stringify(action.payload, null, 3)}`);
-         return state;
+         return addFeature(state, action.payload);
       default:
          return state;
    }
