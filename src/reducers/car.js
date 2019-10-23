@@ -1,4 +1,4 @@
-// import {someaction} from "../actions/someaction.js";
+import {SOME_ACTION} from "../actions/car.js";
 
 const initialState = {
    additionalPrice: 0,
@@ -17,7 +17,7 @@ const initialState = {
    ]
 };
 
-export function reducer(state = initialState, action) {
+export default function (state = initialState, action) {
    switch (action.type) {
       default:
          return state;
